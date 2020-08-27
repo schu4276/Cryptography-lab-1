@@ -16,7 +16,7 @@ public class CryptLab1{
 		String extendedKey = generateKey(message.length(), key);
 		String cipherText = encrypt(plainText, extendedKey);
 
-		return cipherText;
+		return cipherText.toUpperCase();
 	}
 
 
