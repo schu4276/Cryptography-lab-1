@@ -34,13 +34,15 @@ public class CryptLab1{
 			}
 			key+=(key.charAt(i));
 		}
+		/*added the toUpperCase() here because I cant figure the ACII math out
+		right when the letters were lower case */
 		return key.toUpperCase();
 	}
 
 	/*This function removes spaces and punctuation from the message
 		so that it can be encrypted*/
 	public static String removePunctuation(String message){
-		//remove spaces
+		//remove all unwanted characters
 		message = message.replaceAll("[^a-zA-Z]", "").toUpperCase();
 		return message;
 	}
@@ -49,11 +51,11 @@ public class CryptLab1{
 	public static String encrypt(String text, String key){
 		String cipherText = "";
 		for(int i=0; i< text.length(); i++){
-			//convert letter to number 0-25
+			//convert letter to number using ASCII and do mod 26
 			int k = (text.charAt(i) + key.charAt(i)) %26;
-			// convert back to alphabet using ASCII
+			// convert back to char using ASCII
 			k+= 'A';
-
+			//add the character equivilent to the cipher text
 			cipherText +=(char)(k);
 		}
 		return cipherText.toLowerCase();
