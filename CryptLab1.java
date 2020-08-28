@@ -18,7 +18,7 @@ public class CryptLab1{
 
 		return cipherText.toUpperCase();
 	}
-
+	
 
 
 
@@ -46,6 +46,13 @@ public class CryptLab1{
 		message = message.replaceAll("[^a-zA-Z]", "").toUpperCase();
 		return message;
 	}
+	//function to decrypt text given key is known
+	public static String decrypt(String key, String message){
+		//this method still need to be created
+
+	}//end decryption method
+
+
 
 	//function for encrypting text
 	public static String encrypt(String text, String key){
