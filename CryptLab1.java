@@ -81,4 +81,5 @@ public class CryptLab1{
 		}
 		return cipherText.toLowerCase();
 	}
+
 }//end Lab
