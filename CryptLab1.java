@@ -10,6 +10,14 @@ public class CryptLab1{
 		String key = myScanner.nextLine();
 		String cipherText = createEncryption(message, key);
 		System.out.println("your encrypted message is: " + cipherText);
+
+		System.out.println("enter the encrypted message");
+		String encryptedText = myScanner.nextLine();
+		System.out.println("enter the key");
+		key = myScanner.nextLine();
+		System.out.println(createDecryption(encryptedText, key));
+
+
 	}//end main
 	public static String createEncryption(String message, String key){
 		String plainText = removePunctuation(message);
