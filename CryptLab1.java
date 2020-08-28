@@ -27,6 +27,12 @@ public class CryptLab1{
 		return cipherText.toUpperCase();
 	}
 	
+	public static String createDecryption(String cryptoText, String key){
+		String extendedKey = generateKey(cryptoText.length(), key);
+		String cipherText = decrypt(cryptoText, extendedKey);
+
+		return cipherText.toUpperCase();
+	}
 
 
 
