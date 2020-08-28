@@ -49,7 +49,7 @@ public class CryptLab1{
 	//function to decrypt text given key is known
 	public static String decrypt(String key, String message){
 		//this method still need to be created
-
+		return message;
 	}//end decryption method
 
 
