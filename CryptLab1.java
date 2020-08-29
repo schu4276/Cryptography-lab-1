@@ -62,9 +62,6 @@ public class CryptLab1{
 	}
 	//function to decrypt text given key is known
 	public static String decrypt(String key, String message){
-		//this method still need to be created
-		System.out.println(key);
-		System.out.println(message);
 		String decryptedText = "";
 		for(int i=0; i<message.length(); i++){
 			int k = key.charAt(i) - message.charAt(i);
