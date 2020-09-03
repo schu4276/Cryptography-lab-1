@@ -8,11 +8,13 @@ public class crackCipher {
         System.out.println("enter the secret message");
         String message = myScanner.nextLine();
         message = removePunctuation(message);
-        System.out.println(message);
         String[] blockArray = new String[message.length()/5];
         guessKeyLength(message);
+        System.out.println();
+        System.out.println("****Look at output for coiencidences, greatest number is key length, type keylength to continue");
+        int lengthInput = myScanner.nextInt();
         //must change first input of divideCiphertext to key length
-        blockArray = divideCiphertext2(5,message);
+        blockArray = divideCiphertext2(lengthInput,message);
         
 
         char[] letters = message.toCharArray();
@@ -46,19 +48,26 @@ public class crackCipher {
         alphFreq.add(0.07); //z
         alph = new char[] {'a','b','c','d','e','f','g','h','i','j','k', 'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
         
-        ///////////////
+        /* this for loop uses the 'blocks' that were obtained in the 
+         divideCiphertext method, and calculates, then displays the relative frequencies for 
+         each block*/
         for(int i =0; i< blockArray.length; i++){
+            
             String blockMessage = blockArray[i];
             for(int j=0; j<26; j++){
                 findFrequency(alph[j],blockMessage,frequencyList);
 
             }
-            System.out.println("*******Frequencies for " + i );
+             System.out.println("*******Frequency sums for " + i ); 
+           
             findShift(frequencyList, alphFreq);
+            // clearing the list after each block, so numbers dont overlap
             frequencyList.clear();
         }
+        System.out.println(" ****Observe frequency totals.  The highest total for each block correlates with shift \n count starting from 0***");
         
     }
+    // This function calculates the frequencies for each char in the 'secret message' 
     public static void findFrequency(char letter, String message, List<Float> list){
         float frequency =0;
         for(int i =0; i< message.length(); i++){
@@ -67,35 +76,21 @@ public class crackCipher {
             }
         }
         list.add(((frequency/message.length())*100));
-        // list.add( letter + "= " + (frequency/message.length()*100));
 
     }
-    public static String divideCiphertext(int keylength, String message){
-    int numberOfBlocks = message.length()/keylength;  
-    String blockString = "";
-        for(int i=0; i<numberOfBlocks; i++){
-            blockString += message.charAt(keylength*i);
-        }   
-        System.out.println("**********************" + blockString);
-        return blockString;
-    
-    }//end divide method
+
+    // This method is used for dividing the ciphertext into blocks based upon the keylength
     public static String[] divideCiphertext2(int keylength, String message){
-        System.out.println(message.length());
         int blocklength = (message.length()/keylength); 
         int numberOfBlocks = message.length()/blocklength;
-        System.out.println("number of blocks " + numberOfBlocks);
-        System.out.println("block length is " + blocklength);
         String[] blockStringArray = new String[numberOfBlocks];
-        System.out.println(blocklength);
-        int i=0;
+        int i=0; 
         while(i<numberOfBlocks){
             String blockString = "";
             for(int j=0; j<blocklength; j++){
                 
                 blockString += message.charAt((keylength*j) + i);       
             }
-            System.out.println(blockString);
             blockStringArray[i] = blockString;
             i++;
         }
@@ -104,10 +99,12 @@ public class crackCipher {
 
 
     public static String removePunctuation(String message){
-        //remove all unwanted characters
+        //remove all unwanted characters 
         message = message.replaceAll("[^a-zA-Z]", "").toLowerCase();
         return message;
     }
+
+    // Finds the shift for a given block
     public static Float[] findShift(List<Float> cipherFreq, List<Double> englishFreq){
         int counter = 0; 
         Float[] totalsArray = new Float[cipherFreq.size()];
@@ -134,7 +131,9 @@ public class crackCipher {
                     counter++;
                 }
             }
-            System.out.println(counter + " coincidences at shift " + i);
+            if(i>0){
+               System.out.println(counter + " coincidences at key length " + i); 
+            }
             i++;
         }
     }
