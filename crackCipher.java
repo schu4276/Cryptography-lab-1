@@ -21,30 +21,30 @@ public class crackCipher {
         char[] alph;
         List<Double> alphFreq = new ArrayList<Double>(); 
         alphFreq.add(8.12); //a
-        alphFreq.add(1.49);
-        alphFreq.add(2.71);
-        alphFreq.add(4.32);
+        alphFreq.add(1.49); //b
+        alphFreq.add(2.71); //c
+        alphFreq.add(4.32); //d
         alphFreq.add(12.02); //e
-        alphFreq.add(2.30);
-        alphFreq.add(2.03);   
-        alphFreq.add(5.92);
+        alphFreq.add(2.30); //f
+        alphFreq.add(2.03); //g  
+        alphFreq.add(5.92); //h
         alphFreq.add(7.31); //i
-        alphFreq.add(0.10);
-        alphFreq.add(0.69);
-        alphFreq.add(3.98);
+        alphFreq.add(0.10); //j
+        alphFreq.add(0.69); //k
+        alphFreq.add(3.98); //l
         alphFreq.add(2.61); //m
-        alphFreq.add(6.95);
-        alphFreq.add(7.68);
-        alphFreq.add(1.82);
-        alphFreq.add(0.11);
+        alphFreq.add(6.95); //n
+        alphFreq.add(7.68); // o 
+        alphFreq.add(1.82); //p
+        alphFreq.add(0.11); // q
         alphFreq.add(6.02); //r
-        alphFreq.add(6.28);
-        alphFreq.add(9.10);
+        alphFreq.add(6.28); //s
+        alphFreq.add(9.10); //t
         alphFreq.add(2.88); //u
-        alphFreq.add(1.11);
-        alphFreq.add(2.09);
-        alphFreq.add(0.17);
-        alphFreq.add(2.11);
+        alphFreq.add(1.11); //v
+        alphFreq.add(2.09); //w
+        alphFreq.add(0.17); //x
+        alphFreq.add(2.11); //y
         alphFreq.add(0.07); //z
         alph = new char[] {'a','b','c','d','e','f','g','h','i','j','k', 'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
         
@@ -54,7 +54,7 @@ public class crackCipher {
         for(int i =0; i< blockArray.length; i++){
             
             String blockMessage = blockArray[i];
-            for(int j=0; j<26; j++){
+            for(int j=0; j<25; j++){
                 findFrequency(alph[j],blockMessage,frequencyList);
 
             }
